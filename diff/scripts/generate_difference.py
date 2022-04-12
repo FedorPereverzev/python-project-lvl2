@@ -12,8 +12,8 @@ def generate_diff(first_file, second_file):
             if k2 not in data1:
                 result[f'  + {k2}'] = str(v2)
             elif data2[k2] != data1[k2]:
-                result[f'  + {k2}'] = str(v2)
                 result[f'  - {k2}'] = str(data1[k2])
+                result[f'  + {k2}'] = str(v2)
             else:
                 result[f'    {k2}'] = str(v2)
     sorted_result = {k: v for k, v in sorted(result.items(), key=lambda item: str(item[0])[4])}
