@@ -34,4 +34,4 @@ def generate_diff(first_file, second_file):
                      key=lambda item: str(item[0])[4])}
     final = json.dumps(sorted_result, separators=(',', ': '))
     final = symbol_replacer(final)
-    return print(final)
+    return final
