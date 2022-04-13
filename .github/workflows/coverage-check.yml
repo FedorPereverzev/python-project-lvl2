@@ -16,6 +16,8 @@ jobs:
         run: make install
       - name: install3
         run: pip install pytest
+      - name: install4
+        run: pip install pytest-cov  
       - uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: e40f025c294d5cd9033eb3c89f4e5b8e1dad0589b6994885f81c1150b9137530
