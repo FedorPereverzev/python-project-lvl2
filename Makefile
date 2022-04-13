@@ -12,6 +12,9 @@ test:
 test-coverage:
 	poetry run pytest --cov=hexlet_python_package --cov-report xml
 
+coverage:
+	poetry run pytest --cov=diff --cov-report xml	
+
 lint:
 	poetry run flake8 diff
 

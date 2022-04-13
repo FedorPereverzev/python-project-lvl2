@@ -4,7 +4,7 @@ on:
   - push
 
 jobs:
-  linter-check:
+  test-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,3 +18,23 @@ jobs:
         run: pip install pytest   
       - name: run-tester
         run:  make test
+  coverage:
+    needs: [ check ]
+ 
+    name: coverage
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v2
+        with:
+         python-version: 3.8.5
+      - run: |
+         pip install poetry
+          make install
+      - uses: paambaati/codeclimate-action@v2.7.5
+       env:
+         CC_TEST_REPORTER_ID: e40f025c294d5cd9033eb3c89f4e5b8e1dad0589b6994885f81c1150b9137530
+       with:
+         coverageCommand: make coverage
