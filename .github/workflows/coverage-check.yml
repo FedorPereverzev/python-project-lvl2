@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-python@v2
       - name: install1
         run:  pip install poetry
-        uses: paambaati/codeclimate-action@v2.7.5
+      - uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: e40f025c294d5cd9033eb3c89f4e5b8e1dad0589b6994885f81c1150b9137530
         with:
