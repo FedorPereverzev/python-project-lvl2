@@ -13,7 +13,7 @@ test-coverage:
 	poetry run pytest --cov=hexlet_python_package --cov-report xml
 
 lint:
-	poetry run flake8 hexlet_python_package
+	poetry run flake8 diff
 
 selfcheck:
 	poetry check
@@ -24,3 +24,4 @@ build: check
 	poetry build
 
 .PHONY: install test lint selfcheck check build
+
