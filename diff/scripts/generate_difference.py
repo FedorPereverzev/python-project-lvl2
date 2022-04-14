@@ -1,4 +1,5 @@
 import json
+import yaml 
 
 
 def symbol_replacer(arg):
@@ -14,10 +15,19 @@ def symbol_replacer(arg):
         arg = arg.replace(key, symbols[key])
     return arg
 
+def format_parcer(arg):
+    if arg.lower().endswith(('.json')):
+        data = json.load(open(arg))
+    if arg.lower().endswith(('.yml', '.yaml')):
+        data = yaml.load(open(arg), Loader=yaml.Loader)
+    return data    
+
+
+
 
 def generate_diff(first_file, second_file):
-    data1 = json.load(open(first_file))
-    data2 = json.load(open(second_file))
+    data1 = format_parcer(first_file)
+    data2 = format_parcer(second_file)
     result = {}
     for key, value in data1.items():
         if key not in data2:
@@ -35,3 +45,5 @@ def generate_diff(first_file, second_file):
     final = json.dumps(sorted_result, separators=(',', ': '))
     final = symbol_replacer(final)
     return final
+
+
