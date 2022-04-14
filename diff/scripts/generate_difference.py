@@ -1,5 +1,5 @@
 import json
-import yaml 
+import yaml
 
 
 def symbol_replacer(arg):
@@ -15,14 +15,13 @@ def symbol_replacer(arg):
         arg = arg.replace(key, symbols[key])
     return arg
 
+
 def format_parcer(arg):
     if arg.lower().endswith(('.json')):
         data = json.load(open(arg))
     if arg.lower().endswith(('.yml', '.yaml')):
         data = yaml.load(open(arg), Loader=yaml.Loader)
-    return data    
-
-
+    return data
 
 
 def generate_diff(first_file, second_file):
@@ -45,5 +44,3 @@ def generate_diff(first_file, second_file):
     final = json.dumps(sorted_result, separators=(',', ': '))
     final = symbol_replacer(final)
     return final
-
-
